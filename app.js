@@ -1,22 +1,17 @@
-var activityTypes = ["Run", "Hike", "Bike"];
-
-var listOfHikesAndRuns = [];
-
 var bearerTokenInput = document.getElementById("bearerToken");
-
 var spinner = document.getElementById("spinner");
-
 var resultsTextArea = document.getElementById("resultsTxtArea"); 
-
 var foundActivitiSpan = document.getElementById("foundActivitiSpan");
-
 var downloadBtn = document.getElementById("downlaod");
 
 function start() {
-  if(bearerTokenInput.value && listOfHikesAndRuns.length == 0) {
+  if(bearerTokenInput.value && getSelectedActivity().length > 0) {
+    resultsTextArea.value = '';
     showSpinner();
     btoken = 'Bearer ' + bearerTokenInput.value;
     getData();
+  } else {
+    resultsTextArea.value = 'There was an error! Token and activity selection are required to start process.!';
   }
 }
 
@@ -32,18 +27,20 @@ function getData(beforeDate) {
 
 
 function retreiveAndCall(res) {
-  if(!res.success) {
+  if(!res.activities.length && !res.success) {
     hideSpinner();
     resultsTextArea.value = 'There was an error! Refhresh page and try again!';
     console.error('There was an error!', error);
   } else {
     var act = res.activities;
     var len = act.length;
-    if (len != 0 && listOfHikesAndRuns.length < 10) {
+
+    var activityTypes = getSelectedActivity();
+
+    if (len != 0 && activityTypes.length > 0 && listOfHikesAndRuns.length < 10) {
       var lastFull = act[len - 1].lastModified;
       console.log(lastFull);
       var lastDate = lastFull.split(':')[0];
-  
       var hikeAndRun = act.filter(a => activityTypes.includes(a.activityName));
   
       hikeAndRun.forEach(a => listOfHikesAndRuns.push(a.tcxLink));
@@ -102,15 +99,23 @@ function downloadFilesFromBlobURI(uri, name) {
       referrerPolicy: 'no-referrer', 
 
     })
-    .catch(error => {
-      hideSpinner();
-      resultsTextArea.value = 'There was an error! Refhresh page and try again!';
-      console.error('There was an error!', error);
-    })
     .then(response => response.json())
     .then(data => responseProcessor(data));
   
   }
+
+  function getSelectedActivity() {
+    var selectedActivity = [];
+    var activityCheckbox = document.getElementsByName('activity');
+    activityCheckbox.forEach(a => {
+      if(a.checked) {
+        selectedActivity.push(a.value);
+      }
+    });
+  
+    return selectedActivity;
+  }
+  
 
   function showDownlaodBtn(){
     downloadBtn.style.display = "block";

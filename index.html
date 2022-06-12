@@ -33,7 +33,27 @@
     <p>This is a simple FitBit activity exporter. Quite anoyed that I can't easly export my activity. So, I decided to take <strong> an developer action :) </strong></p>
     <p>Hope this will help others too.</p>
     <p>Bearer token: <input id="bearerToken" /></p>
-    <p><button onclick="start()">Click</button> <button onclick="downloadActivites()" id="downlaod" style="display:none">Download ALL</button></p> 
+    <p>
+      <fieldset style="width: 20em;">
+        <legend>Choose your activities to download</legend>
+        <div>
+          <input type="checkbox" id="activityRun" name="activity" value="Run">
+          <label for="activityRun">Run</label>
+        </div>
+        <div>
+          <input type="checkbox" id="activityHike" name="activity" value="Hike">
+          <label for="activityHike">Hike</label>
+        </div>
+        <div>
+          <input type="checkbox" id="activityBike" name="activity" value="Bike">
+          <label for="activityBike">Bike</label>
+        </div>
+      </fieldset>
+    </p>
+    <p>
+      <button onclick="start()">Click</button> 
+      <button onclick="downloadActivites()" id="downlaod" style="display:none">Download ALL</button>
+    </p> 
     <span id="spinner" class="lds-dual-ring" style="display: none;"></span>
     <span id="foundActivitiSpan"></span>
     <p><textarea name="resultsTxtArea" id="resultsTxtArea" cols="30" rows="10" disabled></textarea></p>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Fitbit Exporter</title>
+    <style>
+      .lds-dual-ring {
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+    }
+    .lds-dual-ring:after {
+      content: " ";
+      display: block;
+      width: 40px;
+      height: 40px;
+      margin: 8px;
+      border-radius: 50%;
+      border: 6px solid rgb(0, 89, 255);
+      border-color: rgb(0, 217, 255) transparent rgb(224, 228, 0) transparent;
+      animation: lds-dual-ring 1.2s linear infinite;
+    }
+    @keyframes lds-dual-ring {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <p>This is a simple FitBit activity exporter. Quite anoyed that I can't easly export my activity. So, I decided to take <strong> an developer action :) </strong></p>
+    <p>Hope this will help others too.</p>
+    <p>Bearer token: <input id="bearerToken" /></p>
+    <p><button onclick="start()">Click</button> <button onclick="downloadActivites()" id="downlaod" style="display:none">Download ALL</button></p> 
+    <span id="spinner" class="lds-dual-ring" style="display: none;"></span>
+    <span id="foundActivitiSpan"></span>
+    <p><textarea name="resultsTxtArea" id="resultsTxtArea" cols="30" rows="10" disabled></textarea></p>
+  </body>
+</html>
+<script src="app.js"></script>

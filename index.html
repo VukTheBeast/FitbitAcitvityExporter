@@ -27,12 +27,26 @@
         transform: rotate(360deg);
       }
     }
+    a.icon-help {
+      color:#fff;
+      background-color:#0d29ca;
+      width:12px;
+      height:12px;
+      display:inline-block;
+      border-radius:100%;
+      font-size:10px;
+      text-align:center;
+      text-decoration:none;
+      -webkit-box-shadow: inset -1px -1px 1px 0px rgba(0,0,0,0.25);
+      -moz-box-shadow: inset -1px -1px 1px 0px rgba(0,0,0,0.25);
+      box-shadow: inset -1px -1px 1px 0px rgba(0,0,0,0.25);
+    }
     </style>
   </head>
   <body>
     <p>This is a simple FitBit activity exporter. Quite anoyed that I can't easly export my activity. So, I decided to take <strong> an developer action :) </strong></p>
     <p>Hope this will help others too.</p>
-    <p>Bearer token: <input id="bearerToken" /></p>
+    <p>Bearer token: <input id="bearerToken" /> <a class="icon-help" href="https://github.com/VukTheBeast/FitbitAcitvityExporter/blob/main/README.md#how-to-get-your-auth-token-from-fitbit" target="_blank">?</a></p> 
     <p>
       <fieldset style="width: 20em;">
         <legend>Choose your activities to download</legend>

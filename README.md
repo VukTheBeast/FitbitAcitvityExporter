@@ -11,12 +11,13 @@ I was quite anoyed that I can't download all my activities from FitBit platform 
 In my case, I wanted to migrate my activities from FitBit to Garmin.
 
 
-## How to get your auth token?
-Go to web broweser (prefere Chrome or Mozzila)
-Open and log in to your FitBit account.
-Pres F12 keybord. It should open developer tool.
-Go to Console tab.
-Copy and past this code:
+## How to get your auth token from FitBit?
+
+- Go to web broweser (Chrome or Mozzila)
+- Open and log in to your FitBit account.
+- Pres F12 keybord. It should open developer tool.
+- Go to Console tab.
+- Copy and past this code:
 
 ```
 function getCookie(name) {
@@ -26,7 +27,8 @@ function getCookie(name) {
 }
 getCookie("oauth_access_token")
 ```
-After pressing Enter, it should get you token. Copy value (inside '') and paste it to input feild.
+After pressing Enter, it should get you token. Copy value (inside quotes '<token_value>' ) and paste it to input feild at FitBitExporter page.
+
 ---
 **Still in progress, so I will add more functionalities. If you have any idea, please write me. I am open to it.**
 
